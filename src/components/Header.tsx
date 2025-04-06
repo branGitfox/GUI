@@ -1,13 +1,10 @@
 import React from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link, Location, useLocation} from "react-router-dom";
 
 const Header:React.FC = () => {
     const location:Location = useLocation()
     const activeLink  = (link:string):boolean => {
-        if(location.pathname == link) {
-            return true
-        }
-        return false
+        return location.pathname == link
     }
 
     return (
