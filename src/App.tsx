@@ -1,9 +1,9 @@
 import React from 'react';
+import ComponentsList from './components/ComponentsList';
 const App:React.FC = () => {
 
     return (
         <>
-
             <div className='container mx-auto'>
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="flex-1">
@@ -110,6 +110,7 @@ const App:React.FC = () => {
                 </div>
                 {/*   Fin Stats */}
             </div>
+            <ComponentsList />
         </>
     )
 }
