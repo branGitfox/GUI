@@ -1,7 +1,9 @@
-function App() {
+import React from 'react';
+const App:React.FC = () => {
 
     return (
         <>
+
             <div className='container mx-auto'>
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="flex-1">
@@ -108,7 +110,6 @@ function App() {
                 </div>
                 {/*   Fin Stats */}
             </div>
-
         </>
     )
 }
