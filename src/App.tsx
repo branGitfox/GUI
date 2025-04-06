@@ -33,6 +33,22 @@ function App() {
 
                 </div>
             </div>
+        {/*    introduction */}
+            <div className="hero bg-base-200 ">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img
+                    src="/hero.jpg"
+                    className="w-full lg:w-1/2 rounded-lg shadow-2xl" />
+                <div>
+                    <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">Welcome to GUI</h1>
+                    <p className="py-6">
+                        GUI vous simplifie la vie en vous offrants des components pre-style et pour afficher vos stats github en temps reel.
+                    </p>
+                    <button className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">Commencer</button>
+                </div>
+            </div>
+        </div>
+        {/*    Fin introduction*/}
         </>
     )
 }
