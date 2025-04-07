@@ -9,7 +9,7 @@ const ComponentsList: React.FC = () => {
             title: "Stars, Followers & Following Check",
             content: (
                 <div>
-                    <p>Voici le contenu spécifique pour le composant Stars Check.</p>
+                    <p>Here is the code of Stars, followers and following Check.</p>
                     <div className="mt-4">
                         <div className="mockup-window bg-base-100 border border-base-300">
                             <div className="grid place-content-center h-80">Coming soon</div>
@@ -22,7 +22,7 @@ const ComponentsList: React.FC = () => {
             title: "Repositories & Collabs Count Check",
             content: (
                 <div>
-                    <p>Voici le contenu spécifique pour le composant Repositories Check.</p>
+                    <p>Here is the code of Repositories and collabs Check.</p>
                     <div className="mt-4">
                         <div className="mockup-window bg-base-100 border border-base-300">
                             <div className="grid place-content-center h-80">Hello!</div>
