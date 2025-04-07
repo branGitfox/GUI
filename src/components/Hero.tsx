@@ -17,7 +17,6 @@ const Hero:React.FC = () => {
                             GUI vous simplifie la vie en vous offrants des components pre-style et pour afficher vos stats github en temps reel.
                         </p>
                         <button className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">Commencer</button>
-
                         <button className="btn btn-primary border-2 bg-transparent border-blue-600  mx-2">Utilisation</button>
                     </div>
                 </div>
