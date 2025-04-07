@@ -1,6 +1,37 @@
 import React from 'react'
+import { useState } from 'react';
+import Modal from './Modal'
 
 const ComponentsList: React.FC = () => {
+    const [openModal, setOpenModal] = useState<string | null>(null);
+    const modalContents = {
+        stars: {
+            title: "Stars, Followers & Following Check",
+            content: (
+                <div>
+                    <p>Voici le contenu spécifique pour le composant Stars Check.</p>
+                    <div className="mt-4">
+                        <div className="mockup-window bg-base-100 border border-base-300">
+                            <div className="grid place-content-center h-80">Coming soon</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        repos: {
+            title: "Repositories & Collabs Count Check",
+            content: (
+                <div>
+                    <p>Voici le contenu spécifique pour le composant Repositories Check.</p>
+                    <div className="mt-4">
+                        <div className="mockup-window bg-base-100 border border-base-300">
+                            <div className="grid place-content-center h-80">Hello!</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    };
     return (
         <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 py-6">
@@ -34,7 +65,7 @@ const ComponentsList: React.FC = () => {
                             </li>
                         </ul>
                         <div className="mt-6">
-                            <button className="btn btn-primary w-full">Use</button>
+                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('stars')}>Use</button>
                         </div>
                         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
                             .Preview
@@ -79,7 +110,7 @@ const ComponentsList: React.FC = () => {
 
                                 <div className="stat">
                                     <div className="stat-figure text-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
                                     </div>
                                     <div className="stat-title">Following</div>
                                     <div className="stat-value text-gray-600">1,200</div>
@@ -119,7 +150,7 @@ const ComponentsList: React.FC = () => {
                             </li>
                         </ul>
                         <div className="mt-6">
-                            <button className="btn btn-primary w-full">Use</button>
+                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('repos')}>Use</button>
                         </div>
                         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
                             .Preview
@@ -138,8 +169,8 @@ const ComponentsList: React.FC = () => {
                                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                         </svg>
                                     </div>
-                                    <div className="stat-title">Page Views</div>
-                                    <div className="stat-value text-secondary">2.6M</div>
+                                    <div className="stat-title">Collaborations</div>
+                                    <div className="stat-value text-secondary">100</div>
                                     <div className="stat-desc">21% more than last month</div>
                                 </div>
 
@@ -166,6 +197,25 @@ const ComponentsList: React.FC = () => {
                     </div>
                 </div>
             </div>
+            {openModal === 'stars' && (
+                <Modal
+                    isOpen={openModal === 'stars'}
+                    onClose={() => setOpenModal(null)}
+                    title={modalContents.stars.title}
+                >
+                    {modalContents.stars.content}
+                </Modal>
+            )}
+
+            {openModal === 'repos' && (
+                <Modal
+                    isOpen={openModal === 'repos'}
+                    onClose={() => setOpenModal(null)}
+                    title={modalContents.repos.title}
+                >
+                    {modalContents.repos.content}
+                </Modal>
+            )}
         </div>
     )
 }
