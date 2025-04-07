@@ -2,7 +2,7 @@ import React from "react";
 const Hero:React.FC = () => {
     return (
         <>
-            <div className="hero bg-base-200 ">
+            <div className="hero bg-base-200 mt-15 lg:mt-0">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img
                         src="/hero.jpg"
