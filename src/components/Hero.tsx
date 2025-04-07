@@ -2,12 +2,16 @@ import React from "react";
 const Hero:React.FC = () => {
     return (
         <>
-            <div className="hero bg-base-200 ">
+            <div className="hero bg-base-200 mt-15 lg:mt-0">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img
                         src="/hero.jpg"
                         className=" hidden lg:w-1/2 lg:block rounded-lg shadow-2xl" />
                     <div>
+                        <div className="inline-grid *:[grid-area:1/1] mb-5">
+                            <div className="status status-success animate-ping"></div>
+                            <div className="status status-success"></div>
+                        </div> <div className="badge badge-soft badge-primary">V1.0</div>
                         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">Bienvenue GUI</h1>
                         <p className="py-6">
                             GUI vous simplifie la vie en vous offrants des components pre-style et pour afficher vos stats github en temps reel.
