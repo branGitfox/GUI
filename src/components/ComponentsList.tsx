@@ -33,7 +33,7 @@ const ComponentsList: React.FC = () => {
         }
     };
     return (
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-12">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 py-6">
                 <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left">Components</h1>
                 <div className='flex justify-center md:justify-end'>
