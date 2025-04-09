@@ -12,7 +12,6 @@ const Hero:React.FC = () => {
                             <div className="status status-success animate-ping"></div>
                             <div className="status status-success"></div>
                         </div> <div className="badge badge-soft badge-primary">V1.0</div>
-                        <div className="absolute top-4 right-4 w-20 h-20 bg-blue-600/10 rounded-full"></div>
                         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">Bienvenue GUI</h1>
                         <p className="py-6">
                             GUI vous simplifie la vie en vous offrants des components pre-style et pour afficher vos stats github en temps reel.
