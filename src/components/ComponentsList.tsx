@@ -30,6 +30,20 @@ const ComponentsList: React.FC = () => {
                     </div>
                 </div>
             )
+        },
+
+        compare: {
+            title: "Comparer vos infos avec un autre utilisateur",
+            content: (
+                <div>
+                    <p>Le code du component comparaison.</p>
+                    <div className="mt-4">
+                        <div className="mockup-window bg-base-100 border border-base-300">
+                            <div className="grid place-content-center h-80">Ngity !!</div>
+                        </div>
+                    </div>
+                </div>
+            )
         }
     };
     return (
@@ -196,6 +210,48 @@ const ComponentsList: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="card bg-base-100 shadow-sm w-full">
+                    <div className="card-body">
+                        <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+                            <h2 className="text-2xl sm:text-3xl font-bold">Compare deux utlisateurs</h2>
+                            <span className="text-xl">
+                                <button className="btn btn-square btn-ghost">
+                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                                </button>
+                            </span>
+                        </div>
+                        <ul className="mt-6 flex flex-col gap-2 text-xs">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                                <span>Tu peux comparer tes infos avec ceux d'un autre utilisateur</span>
+                            </li>
+                        </ul>
+                        <div className="mt-6">
+                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('compare')}>Utiliser</button>
+                        </div>
+
+                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
+                            .Preview
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <figure className="diff aspect-16/9" tabIndex={0}>
+                    <div className="diff-item-1" role="img">
+                        <img alt="daisy" src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp" />
+                    </div>
+                    <div className="diff-item-2" role="img" tabIndex={0}>
+                        <img
+                            alt="daisy"
+                            src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp" />
+                    </div>
+                    <div className="diff-resizer"></div>
+                </figure>
             </div>
             {openModal === 'stars' && (
                 <Modal
@@ -214,6 +270,16 @@ const ComponentsList: React.FC = () => {
                     title={modalContents.repos.title}
                 >
                     {modalContents.repos.content}
+                </Modal>
+            )}
+
+            {openModal === 'compare' && (
+                <Modal
+                    isOpen={openModal === 'compare'}
+                    onClose={() => setOpenModal(null)}
+                    title={modalContents.compare.title}
+                >
+                    {modalContents.compare.content}
                 </Modal>
             )}
         </div>
