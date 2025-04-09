@@ -48,6 +48,11 @@ const Footer:React.FC = () => {
                 <a className="link link-hover">Terms d'utilisation</a>
             </nav>
         </footer>
+            <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+                <aside>
+                    <p>Copyright © {new Date().getFullYear()} - Tout droit reserve a GUI  Ltd</p>
+                </aside>
+            </footer>
         </>
     )
 }
