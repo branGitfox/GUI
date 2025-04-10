@@ -42,7 +42,7 @@ const Hero:React.FC = () => {
                     </div>
                     <div className="stat-title">Total Utilisateurs</div>
                     <div className="stat-value text-primary">25.6K</div>
-                    <div className="stat-desc">21% plus que le mois dernier</div>
+
                 </div>
 
                 <div className="stat">
@@ -61,7 +61,7 @@ const Hero:React.FC = () => {
                     </div>
                     <div className="stat-title">Toal Contributeurs</div>
                     <div className="stat-value text-secondary">2.6M</div>
-                    <div className="stat-desc">21% plus que le mois dernier</div>
+
                 </div>
 
                 <div className="stat">
@@ -75,7 +75,6 @@ const Hero:React.FC = () => {
                     </div>
                     <div className="stat-title">Total Etoiles</div>
                     <div className="stat-value">100</div>
-                    <div className="stat-desc">21% plus que le mois dernier</div>
 
 
                 </div>
