@@ -1,0 +1,11 @@
+{
+  "title": "Welcome to GUI",
+  "description": "GUI makes your life easier by providing pre-styled components to display your GitHub statistics in real time.",
+  "startBtn": "Get Started",
+  "useBtn": "Usage",
+  "component": "Components",
+  "search": "Search",
+  "home": "Home",
+  "light": "Light",
+  "dark": "Dark"
+}

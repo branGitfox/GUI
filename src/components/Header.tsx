@@ -1,11 +1,20 @@
 import React from "react";
 import {Link, Location, useLocation} from "react-router-dom";
-
+import {useTranslation} from "react-i18next";
 const Header:React.FC = () => {
     const location:Location = useLocation()
     const activeLink  = (link:string):boolean => {
         return location.pathname == link
     }
+    const {t, i18n} = useTranslation()
+
+    const changeLanguage = (lang:string):void => {
+        i18n.changeLanguage(lang).then(() => console.log("fait"))
+    }
+
+
+
+
 
     return (
         <>
@@ -16,8 +25,13 @@ const Header:React.FC = () => {
                 </div>
                 <div className="flex-none hidden md:block">
                     <div className="flex items-center">
-                        <Link to='/' className={`mr-5 ${activeLink('/') && 'underline'} decoration-violet-600 hover:decoration-violet-600`}>Accueil</Link>
-                        <Link to='/components' className={`mr-5 ${activeLink('/components') && 'underline'} hover:underline decoration-violet-600`}>Composants</Link>
+                        <svg className='w-7 h-7' viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#0886af" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M34.53,14.59s-1.6,18.21-24,32.78" stroke-linecap="round"></path><line x1="7.35" y1="14.59" x2="41.46" y2="14.59" stroke-linecap="round"></line><line x1="24.4" y1="9.08" x2="24.4" y2="14.59" stroke-linecap="round"></line><path d="M16.76,22.05S25.2,36.8,32,41.33" stroke-linecap="round"></path><path d="M33.55,54.92l10.74-25a.89.89,0,0,1,1.63,0l10.73,25" stroke-linecap="round"></path><line x1="37.25" y1="46.3" x2="52.96" y2="46.3" stroke-linecap="round"></line></g></svg>
+                        <select onChange={(e) => changeLanguage(e.target.value)} defaultValue='FR' className="select select-primary mx-2 w-20 h-5">
+                            <option value='fr'>FR</option>
+                            <option value='eng'>ENG</option>
+                        </select>
+                        <Link to='/' className={`mr-5 ${activeLink('/') && 'underline'} decoration-violet-600 hover:decoration-violet-600`}>{t("home")}</Link>
+                        <Link to='/components' className={`mr-5 ${activeLink('/components') && 'underline'} hover:underline decoration-violet-600`}>{t("component")}</Link>
                         <div className="flex gap-2">
                             <label className="swap swap-rotate">
                                 <input type="checkbox" className="theme-controller" value="light" />
@@ -39,6 +53,12 @@ const Header:React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+                <svg className='w-7 h-7 md:hidden' viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#0886af" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M34.53,14.59s-1.6,18.21-24,32.78" stroke-linecap="round"></path><line x1="7.35" y1="14.59" x2="41.46" y2="14.59" stroke-linecap="round"></line><line x1="24.4" y1="9.08" x2="24.4" y2="14.59" stroke-linecap="round"></line><path d="M16.76,22.05S25.2,36.8,32,41.33" stroke-linecap="round"></path><path d="M33.55,54.92l10.74-25a.89.89,0,0,1,1.63,0l10.73,25" stroke-linecap="round"></path><line x1="37.25" y1="46.3" x2="52.96" y2="46.3" stroke-linecap="round"></line></g></svg>
+                <select onChange={(e) => changeLanguage(e.target.value)} defaultValue='FR' className="select select-primary mx-2 w-20 h-5 md:hidden">
+                    <option value='fr'>FR</option>
+                    <option value='eng'>ENG</option>
+                </select>
                 <div className="flex-none md:hidden">
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -48,16 +68,16 @@ const Header:React.FC = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <Link to='/' className={activeLink('/') ? 'active' : ''}>Accueil</Link>
+                                <Link to='/' className={activeLink('/') ? 'active' : ''}>{t("home")}</Link>
                             </li>
                             <li>
-                                <Link to='/components' className={activeLink('/components') ? 'active' : ''}>Composants</Link>
+                                <Link to='/components' className={activeLink('/components') ? 'active' : ''}>{t("component")}</Link>
                             </li>
                             <li>
                                 <label className="swap swap-rotate flex justify-start">
                                     <input type="checkbox" className="theme-controller" value="light" />
-                                    <div className="swap-off">Mode clair</div>
-                                    <div className="swap-on">Mode sombre</div>
+                                    <div className="swap-off">Mode {t("light")}</div>
+                                    <div className="swap-on">Mode {t("dark")}</div>
                                 </label>
                             </li>
                         </ul>
