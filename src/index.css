@@ -2,3 +2,13 @@
 @plugin "daisyui" {
     themes: light --default, dark --prefersdark;
 }
+/* Animation fluide */
+.user-comparison-img {
+  transition: width 0.3s ease;
+}
+
+/* Empêche la sélection de texte pendant le drag */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}

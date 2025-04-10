@@ -1,10 +1,189 @@
 import React from 'react'
 import { useState } from 'react';
 import Modal from './Modal'
+import UserComparison from './UserComparison';
+import { UserData } from '../types/userTypes';
 
 const ComponentsList: React.FC = () => {
     const [openModal, setOpenModal] = useState<string | null>(null);
+    const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
+    const [showCode, setShowCode] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
+
+    const demoUsers: { user1: UserData; user2: UserData } = {
+        user1: {
+            username: "VotreProfil",
+            stars: 124,
+            followers: 423,
+            following: 56,
+            repos: 32,
+            collaborations: 18,
+            avatarUrl: "https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp"
+        },
+        user2: {
+            username: "AutreUtilisateur",
+            stars: 456,
+            followers: 789,
+            following: 123,
+            repos: 65,
+            collaborations: 32,
+            avatarUrl: "https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp"
+        }
+    };
+    const handleUserClick = (user: UserData) => {
+        setSelectedUser(user);
+        setOpenModal('userProfile');
+        setShowCode(false);
+    };
     const modalContents = {
+        compare: {
+            title: "Comparer vos infos avec un autre utilisateur",
+            content: (
+                <div>
+                    <UserComparison
+                        user1={demoUsers.user1}
+                        user2={demoUsers.user2}
+                        onUserClick={handleUserClick}
+                    />
+
+                    <div className="mt-6">
+                        <button
+                            className="btn btn-primary w-full"
+                            onClick={() => setShowCode(true)}
+                        >
+                            Utiliser ce composant
+                        </button>
+                    </div>
+
+                    {showCode && (
+                        <div className="mt-6">
+                            <div className="flex justify-between items-center mb-2">
+                                <h4 className="font-bold">Code à implémenter :</h4>
+                                <button
+                                    className="btn btn-sm btn-ghost"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(`import UserComparison from './UserComparison';
+
+const MyComponent = () => {
+  const user1 = {
+    username: "VotreProfil",
+    stars: 124,
+    followers: 423,
+    following: 56,
+    repos: 32,
+    collaborations: 18,
+    avatarUrl: "https://avatars.githubusercontent.com/u/VOTRE_ID?v=4"
+  };
+
+  const user2 = {
+    username: "AutreUtilisateur",
+    stars: 456,
+    followers: 789,
+    following: 123,
+    repos: 65,
+    collaborations: 32,
+    avatarUrl: "https://avatars.githubusercontent.com/u/AUTRE_ID?v=4"
+  };
+
+  return (
+    <UserComparison 
+      user1={user1} 
+      user2={user2} 
+      onUserClick={(user) => console.log('User clicked:', user)}
+    />
+  );
+};`);
+                                        setIsCopied(true);
+                                        setTimeout(() => setIsCopied(false), 2000);
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                    </svg>
+                                    {isCopied ? 'Copié !' : 'Copier'}
+                                </button>
+                            </div>
+                            <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-96">
+                                <pre className="text-sm whitespace-pre-wrap">
+                                    {`import UserComparison from './UserComparison';
+
+const MyComponent = () => {
+  const user1 = {
+    username: "VotreProfil",
+    stars: 124,
+    followers: 423,
+    following: 56,
+    repos: 32,
+    collaborations: 18,
+    avatarUrl: "https://avatars.githubusercontent.com/u/VOTRE_ID?v=4"
+  };
+
+  const user2 = {
+    username: "AutreUtilisateur",
+    stars: 456,
+    followers: 789,
+    following: 123,
+    repos: 65,
+    collaborations: 32,
+    avatarUrl: "https://avatars.githubusercontent.com/u/AUTRE_ID?v=4"
+  };
+
+  return (
+    <UserComparison 
+      user1={user1} 
+      user2={user2} 
+      onUserClick={(user) => console.log('User clicked:', user)}
+    />
+  );
+};`}
+                                </pre>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )
+        },
+        userProfile: {
+            title: selectedUser ? `${selectedUser.username} - Profil` : "Profil",
+            content: selectedUser && (
+                <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                        <img
+                            src={selectedUser.avatarUrl}
+                            alt={selectedUser.username}
+                            className="w-16 h-16 rounded-full"
+                        />
+                        <h3 className="text-2xl font-bold">{selectedUser.username}</h3>
+                    </div>
+
+                    <div className="stats shadow">
+                        <div className="stat">
+                            <div className="stat-title">Stars</div>
+                            <div className="stat-value">{selectedUser.stars}</div>
+                        </div>
+                        <div className="stat">
+                            <div className="stat-title">Followers</div>
+                            <div className="stat-value">{selectedUser.followers}</div>
+                        </div>
+                        <div className="stat">
+                            <div className="stat-title">Following</div>
+                            <div className="stat-value">{selectedUser.following}</div>
+                        </div>
+                    </div>
+
+                    <div className="stats shadow">
+                        <div className="stat">
+                            <div className="stat-title">Repositories</div>
+                            <div className="stat-value">{selectedUser.repos}</div>
+                        </div>
+                        <div className="stat">
+                            <div className="stat-title">Collaborations</div>
+                            <div className="stat-value">{selectedUser.collaborations}</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
         stars: {
             title: "Stars, Followers & Following Check",
             content: (
@@ -31,20 +210,6 @@ const ComponentsList: React.FC = () => {
                 </div>
             )
         },
-
-        compare: {
-            title: "Comparer vos infos avec un autre utilisateur",
-            content: (
-                <div>
-                    <p>Le code du component comparaison.</p>
-                    <div className="mt-4">
-                        <div className="mockup-window bg-base-100 border border-base-300">
-                            <div className="grid place-content-center h-80">Ngity !!</div>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
     };
     return (
         <div className="container mx-auto px-4 mt-12">
@@ -230,24 +395,18 @@ const ComponentsList: React.FC = () => {
 
                         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
                             .Preview
-
                         </div>
-
-
                     </div>
-
                 </div>
-                <figure className="diff aspect-16/9" tabIndex={0}>
-                    <div className="diff-item-1" role="img">
-                        <img alt="daisy" src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp" />
-                    </div>
-                    <div className="diff-item-2" role="img" tabIndex={0}>
-                        <img
-                            alt="daisy"
-                            src="https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp" />
-                    </div>
-                    <div className="diff-resizer"></div>
-                </figure>
+                <UserComparison
+                    user1={demoUsers.user1}
+                    user2={demoUsers.user2}
+                    onUserClick={(user) => {
+                        console.log('User clicked:', user.username);
+                        setSelectedUser(user);
+                        setOpenModal('userProfile');
+                    }}
+                />
             </div>
             {openModal === 'stars' && (
                 <Modal
@@ -276,6 +435,16 @@ const ComponentsList: React.FC = () => {
                     title={modalContents.compare.title}
                 >
                     {modalContents.compare.content}
+                </Modal>
+            )}
+
+            {openModal === 'userProfile' && selectedUser && (
+                <Modal
+                    isOpen={openModal === 'userProfile'}
+                    onClose={() => setOpenModal(null)}
+                    title={modalContents.userProfile.title}
+                >
+                    {modalContents.userProfile.content}
                 </Modal>
             )}
         </div>
