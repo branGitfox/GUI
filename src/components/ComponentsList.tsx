@@ -248,6 +248,39 @@ const MyComponent = () => {
                 </div>
             )
         },
+
+
+        collaboratorsProfile: {
+            title: "Collaborators Profile List",
+            content: (
+                <div>
+                    <p>Here is the code of Collaborators Profile List</p>
+                    <div className="mt-4">
+                        <div className="flex justify-between items-center mb-2">
+                            <h4 className="font-bold">Code à implémenter :</h4>
+                            <button
+                                className="btn btn-sm btn-ghost"
+                                onClick={() => {
+                                    navigator.clipboard.writeText(``);
+                                    setIsCopied(true);
+                                    setTimeout(() => setIsCopied(false), 2000);
+                                }}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                </svg>
+                                {isCopied ? 'Copié !' : 'Copier'}
+                            </button>
+                        </div>
+                    </div>
+                    <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-64">
+                        <pre className="text-sm whitespace-pre-wrap">
+                            {``}
+                        </pre>
+                    </div>
+                </div>
+            )
+        },
     };
     return (
         <div className="container mx-auto px-4 mt-12">
@@ -445,6 +478,55 @@ const MyComponent = () => {
                         setOpenModal('userProfile');
                     }}
                 />
+
+                <div className="card bg-base-100 shadow-sm w-full">
+                    <div className="card-body">
+                        <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+                            <h2 className="text-2xl sm:text-3xl font-bold">Affiche le profil de tout les collaborators</h2>
+                            <span className="text-xl">
+                                <button className="btn btn-square btn-ghost">
+                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
+                                </button>
+                            </span>
+                        </div>
+                        <ul className="mt-6 flex flex-col gap-2 text-xs">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                                <span>Tu peux afficher les profils de tout les collaborateurs d'un repository</span>
+                            </li>
+                        </ul>
+                        <div className="mt-6">
+                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('collaboratorsProfile')}>Utiliser</button>
+                        </div>
+
+                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
+                            .Preview
+                        </div>
+                        <div className="avatar-group -space-x-6">
+                            <div className="avatar">
+                                <div className="w-12">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                            <div className="avatar">
+                                <div className="w-12">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                            <div className="avatar">
+                                <div className="w-12">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                            <div className="avatar">
+                                <div className="w-12">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {openModal === 'stars' && (
                 <Modal
@@ -476,6 +558,17 @@ const MyComponent = () => {
                 </Modal>
             )}
 
+
+            {openModal === 'collaboratorsProfile' && (
+                <Modal
+                    isOpen={openModal === 'collaboratorsProfile'}
+                    onClose={() => setOpenModal(null)}
+                    title={modalContents.collaboratorsProfile.title}
+                >
+                    {modalContents.collaboratorsProfile.content}
+                </Modal>
+            )}
+
             {openModal === 'userProfile' && selectedUser && (
                 <Modal
                     isOpen={openModal === 'userProfile'}
@@ -485,6 +578,7 @@ const MyComponent = () => {
                     {modalContents.userProfile.content}
                 </Modal>
             )}
+
         </div>
     )
 }
