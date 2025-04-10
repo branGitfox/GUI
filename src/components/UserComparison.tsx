@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { UserComparisonProps } from '../types/userTypes';
 
 const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserClick }) => {
-  const [position, setPosition] = useState(50); // Position du séparateur (50%)
+  const [position, setPosition] = useState(50);
 
   return (
     <div className="w-full relative h-64 rounded-lg overflow-hidden">
-      {/* Premier utilisateur */}
       <div
         className="absolute top-0 left-0 bottom-0 cursor-pointer"
         style={{ 
@@ -24,8 +23,6 @@ const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserCli
           {user1.username}
         </div>
       </div>
-
-      {/* Deuxième utilisateur */}
       <div
         className="absolute top-0 right-0 bottom-0 cursor-pointer"
         style={{ 
@@ -43,8 +40,6 @@ const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserCli
           {user2.username}
         </div>
       </div>
-
-      {/* Contrôle du séparateur */}
       <div
         className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize z-10"
         style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
