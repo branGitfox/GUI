@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-
+import eng from '../public/locales/eng/translation.json'
+import fr from '../public/locales/fr/translation.json'
 // don't want to use this?
 // have a look at the Quick start guide
 // for passing in lng and translations on init
@@ -16,7 +17,17 @@ i18n
     // init i18next
     // for all options read: https://www.i18next.com/overview/configuration-options
     .init({
-        fallbackLng: 'en',
+        resources:{
+            eng:{
+                translation:eng
+            },
+
+            fr:{
+                translation:fr
+            }
+        },
+        lng:"fr",
+        fallbackLng: 'fr',
         debug: true,
 
         interpolation: {

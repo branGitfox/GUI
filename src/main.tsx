@@ -5,7 +5,7 @@ import App from './App.tsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import Home from "./components/Home.tsx";
 import ComponentsList from "./components/ComponentsList.tsx";
-
+import './i18n';
 const routes = createBrowserRouter([
     {
         path:'/',
