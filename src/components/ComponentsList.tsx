@@ -105,7 +105,7 @@ const MyComponent = () => {
                                     {isCopied ? 'Copié !' : 'Copier'}
                                 </button>
                             </div>
-                            <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-96">
+                            <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-64">
                                 <pre className="text-sm whitespace-pre-wrap">
                                     {`import UserComparison from './UserComparison';
 
