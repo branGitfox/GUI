@@ -1,5 +1,14 @@
 {
 
-  "titre": "hello world"
+  "title": "Bienvenue  sur GUI",
+  "description": "GUI vous simplifie la vie en vous offrant des composants pré-stylés pour afficher vos statistiques GitHub en temps réel.",
+  "startBtn": "Commencer",
+  "useBtn": "Utilisation",
+  "component": "Composants",
+  "search": "Rechercher",
+  "home": "Accueil",
+  "light": "Clair",
+  "dark": "Sombre"
+
 
 }

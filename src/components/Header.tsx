@@ -30,8 +30,8 @@ const Header:React.FC = () => {
                             <option value='fr'>FR</option>
                             <option value='eng'>ENG</option>
                         </select>
-                        <Link to='/' className={`mr-5 ${activeLink('/') && 'underline'} decoration-violet-600 hover:decoration-violet-600`}>Accueil</Link>
-                        <Link to='/components' className={`mr-5 ${activeLink('/components') && 'underline'} hover:underline decoration-violet-600`}>Composants</Link>
+                        <Link to='/' className={`mr-5 ${activeLink('/') && 'underline'} decoration-violet-600 hover:decoration-violet-600`}>{t("home")}</Link>
+                        <Link to='/components' className={`mr-5 ${activeLink('/components') && 'underline'} hover:underline decoration-violet-600`}>{t("component")}</Link>
                         <div className="flex gap-2">
                             <label className="swap swap-rotate">
                                 <input type="checkbox" className="theme-controller" value="light" />
@@ -68,16 +68,16 @@ const Header:React.FC = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <Link to='/' className={activeLink('/') ? 'active' : ''}>Accueil</Link>
+                                <Link to='/' className={activeLink('/') ? 'active' : ''}>{t("home")}</Link>
                             </li>
                             <li>
-                                <Link to='/components' className={activeLink('/components') ? 'active' : ''}>Composants</Link>
+                                <Link to='/components' className={activeLink('/components') ? 'active' : ''}>{t("component")}</Link>
                             </li>
                             <li>
                                 <label className="swap swap-rotate flex justify-start">
                                     <input type="checkbox" className="theme-controller" value="light" />
-                                    <div className="swap-off">Mode clair</div>
-                                    <div className="swap-on">Mode sombre</div>
+                                    <div className="swap-off">Mode {t("light")}</div>
+                                    <div className="swap-on">Mode {t("dark")}</div>
                                 </label>
                             </li>
                         </ul>
