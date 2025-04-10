@@ -4,6 +4,7 @@ import Modal from './Modal'
 import UserComparison from './UserComparison';
 import { UserData } from '../types/userTypes';
 import { useTranslation } from "react-i18next";
+import CollaboratorsProfile from "./CollaboratorsProfile.tsx";
 
 const ComponentsList: React.FC = () => {
     const [openModal, setOpenModal] = useState<string | null>(null);
@@ -503,28 +504,7 @@ const MyComponent = () => {
                         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
                             .Preview
                         </div>
-                        <div className="avatar-group -space-x-6">
-                            <div className="avatar">
-                                <div className="w-12">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                </div>
-                            </div>
-                            <div className="avatar">
-                                <div className="w-12">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                </div>
-                            </div>
-                            <div className="avatar">
-                                <div className="w-12">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                </div>
-                            </div>
-                            <div className="avatar">
-                                <div className="w-12">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                </div>
-                            </div>
-                        </div>
+                    <CollaboratorsProfile/>
                     </div>
                 </div>
             </div>
