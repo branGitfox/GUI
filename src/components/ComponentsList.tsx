@@ -119,7 +119,6 @@ const ComponentsList: React.FC = () => {
                                     </div>
                                     <div className="stat-title">Followers</div>
                                     <div className="stat-value text-gray-600">4,200</div>
-                                    <div className="stat-desc">↗︎ 400 (22%)</div>
                                 </div>
 
                                 <div className="stat">
@@ -128,7 +127,6 @@ const ComponentsList: React.FC = () => {
                                     </div>
                                     <div className="stat-title">Following</div>
                                     <div className="stat-value text-gray-600">1,200</div>
-                                    <div className="stat-desc">↘︎ 90 (14%)</div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +183,6 @@ const ComponentsList: React.FC = () => {
                                     </div>
                                     <div className="stat-title">Collaborations</div>
                                     <div className="stat-value text-secondary">100</div>
-                                    <div className="stat-desc">21% more than last month</div>
                                 </div>
 
                                 <div className="stat">
@@ -204,7 +201,6 @@ const ComponentsList: React.FC = () => {
                                     </div>
                                     <div className="stat-title">Repositories</div>
                                     <div className="stat-value text-gray-600">200</div>
-                                    <div className="stat-desc">↘︎ 90 (14%)</div>
                                 </div>
                             </div>
                         </div>
