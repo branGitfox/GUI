@@ -1,5 +1,5 @@
 import axios from "axios"
-interface UserInfo {
+export interface UserInfo {
     stars:number,
     followers:number,
     following:number,
