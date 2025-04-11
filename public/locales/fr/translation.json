@@ -8,7 +8,26 @@
   "search": "Rechercher",
   "home": "Accueil",
   "light": "Clair",
-  "dark": "Sombre"
-
-
+  "dark": "Sombre",
+  "compareTitle": "Comparer vos infos avec un autre utilisateur",
+  "useComponent": "Utiliser ce composant",
+  "implementCode": "Code à implémenter :",
+  "copy": "Copier",
+  "copied": "Copié !",
+  "profileTitle": "Profil",
+  "starsTitle": "Vérification des Stars, Followers et Following",
+  "reposTitle": "Vérification des Repositories et Collaborations",
+  "collaboratorsTitle": "Liste des profils des collaborateurs",
+  "starsDesc": "Vous pouvez vérifier vos stars et followers avec ce composant",
+  "reposDesc": "Vous pouvez vérifier vos repositories et collaborations avec ce composant",
+  "compareDesc": "Vous pouvez comparer vos stats avec un autre utilisateur",
+  "collaboratorsDesc": "Vous pouvez afficher les profils de tous les collaborateurs d'un repository",
+  "compareUsers": "Comparer deux utilisateurs",
+  "showCollaborators": "Afficher tous les profils des collaborateurs",
+  "stars": "Stars",
+  "followers": "Followers",
+  "following": "Following",
+  "repositories": "Repositories",
+  "collaborations": "Collaborations",
+  "preview": "Aperçu"
 }
