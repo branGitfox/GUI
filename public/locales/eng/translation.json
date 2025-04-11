@@ -28,5 +28,15 @@
   "following": "Following",
   "repositories": "Repositories",
   "collaborations": "Collaborations",
-  "preview": "Preview"
+  "preview": "Preview",
+  "companyName": "GUI Ltd",
+  "servicesTitle": "Services",
+  "preStyledComponents": "Pre-styled components",
+  "githubStats": "GitHub statistics calculation",
+  "contributorsTitle": "Contributors",
+  "contributeTitle": "Contribute",
+  "github": "GitHub",
+  "license": "License",
+  "terms": "Terms of use",
+  "copyright": "Copyright © {year} - All rights reserved by GUI Ltd"
 }
