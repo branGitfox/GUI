@@ -1,3 +1,4 @@
+import axios from "axios"
 interface UserInfo {
     stars:number,
     followers:number,
@@ -14,16 +15,33 @@ interface RepositoryInfo{
 
 
 
-async function getUserInfo(): UserInfo[]{
-    let stars:number=0
-    let followers:number=0
-    let followwing:number =0
-    let reposiroryCount:number=0
+
+export default async function getUserInfo(): Promise<UserInfo|undefined>{
     try{
-        await
+
+        const res =   await axios.get("https://api.github.com/users/BranGitfox")
+        return {
+            stars:10,
+            followers:res.data.followers,
+            following:res.data.following,
+            repositoryCount:res.data.public_repos
+        }
+
     }catch (err){
         console.log("ERR", err)
     }
 
 }
 
+
+export  async function getReposInfo(user:string,repos:string): Promise<RepositoryInfo|undefined>{
+    try{
+
+        const res =   await axios.get(`https://api.github.com/users/${user}/${repos}`)
+       return res.data
+
+    }catch (err){
+        console.log("ERR", err)
+    }
+
+}
