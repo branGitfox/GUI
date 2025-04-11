@@ -1,9 +1,9 @@
 import React from 'react'
 import Header from './components/Header'
 import {Outlet} from "react-router-dom";
-import getUserInfo from "./api/api.ts";
+import getUserInfo, {getReposInfo} from "./api/api.ts";
 const App:React.FC = () => {
-    console.log(getUserInfo())
+    console.log(getReposInfo('BranGitfox', 'GUI'))
     return (
         <>
             <div className='container mx-auto'>
