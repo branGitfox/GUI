@@ -6,7 +6,7 @@ export interface UserInfo {
     repositoryCount: number
 }
 
-interface RepositoryInfo{
+export interface RepositoryInfo{
     stars:number,
     fork:number,
     collaborators:[],

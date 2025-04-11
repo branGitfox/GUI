@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
+import { getUserInfo, UserInfo } from '../api/api';
 
 interface ReposStatsCardProps {
     onUseClick: () => void;
+    user?: string;
 }
 
-const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
+const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user }) => {
     const { t } = useTranslation();
-
+    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+    useEffect(() => {
+        try {
+            getUserInfo(user!).then((res) => {
+                if (res) {
+                    setUserInfo(res);
+                }
+            });
+        } catch (error) {
+            console.error("error:", error);
+        }
+    }, [user]);
     return (
         <div className="card bg-base-100 shadow-sm w-full">
             <div className="card-body">
@@ -59,7 +72,7 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
                                 </svg>
                             </div>
                             <div className="stat-title">Collaborations</div>
-                            <div className="stat-value text-secondary">100</div>
+                            <div className="stat-value text-secondary">2</div>
                         </div>
 
                         <div className="stat">
@@ -77,7 +90,7 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
                                 </svg>
                             </div>
                             <div className="stat-title">Repositories</div>
-                            <div className="stat-value text-gray-600">200</div>
+                            <div className="stat-value text-gray-600">{userInfo?.repositoryCount?.toLocaleString() ?? 'N/A'}</div>
                         </div>
                     </div>
                 </div>
