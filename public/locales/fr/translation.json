@@ -43,5 +43,7 @@
   "versionBadge": "V1.0",
   "totalUsers": "Total Utilisateurs",
   "totalContributors": "Total Contributeurs",
-  "totalStars": "Total Étoiles"
+  "totalStars": "Total Étoiles",
+  "new": "Nouveau",
+  "newContent": "Nouveau contenu disponible !"
 }

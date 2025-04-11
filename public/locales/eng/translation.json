@@ -42,5 +42,7 @@
   "versionBadge": "V1.0",
   "totalUsers": "Total Users",
   "totalContributors": "Total Contributors",
-  "totalStars": "Total Stars"
+  "totalStars": "Total Stars",
+  "new": "New",
+  "newContent": "New content available!"
 }
