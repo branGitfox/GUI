@@ -4,8 +4,11 @@ import Modal from './Modal'
 import UserComparison from './UserComparison';
 import { UserData } from '../types/userTypes';
 import { useTranslation } from "react-i18next";
-import CollaboratorsProfile from "./CollaboratorsProfile.tsx";
+import CollaboratorsCard from './CollaboratorsCard.tsx';
 import CodeSnippet from './CodeSnippet.tsx';
+import StarsStatsCard from './StarsStatsCard.tsx';
+import ReposStatsCard from './ReposStatsCard.tsx';
+import UserComparisonCard from './UserComparisonCard.tsx';
 
 const ComponentsList: React.FC = () => {
     const [openModal, setOpenModal] = useState<string | null>(null);
@@ -232,216 +235,15 @@ const MyComponent = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Card 1 */}
-                <div className="card bg-base-100 shadow-sm w-full">
-                    <div className="card-body">
-                        <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                            <h2 className="text-2xl sm:text-3xl font-bold">{t("starsTitle")}</h2>
-                            <span className="text-xl">
-                                <button className="btn btn-square btn-ghost">
-                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                                </button>
-                            </span>
-                        </div>
-                        <ul className="mt-6 flex flex-col gap-2 text-xs">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                <span>{t("starsDesc")}</span>
-                            </li>
-                        </ul>
-                        <div className="mt-6">
-                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('stars')}>{t("useComponent")}</button>
-                        </div>
-                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                            .{t("preview")}
-                            <div className="stats shadow flex flex-col sm:flex-row">
-                                <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            className="inline-block h-8 w-8 stroke-current">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="stat-title">Stars</div>
-                                    <div className="stat-value text-gray-600">31K</div>
-                                    <div className="stat-desc">Jan 1st - Feb 1st</div>
-                                </div>
-
-                                <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            className="inline-block h-8 w-8 stroke-current">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="stat-title">Followers</div>
-                                    <div className="stat-value text-gray-600">4,200</div>
-                                </div>
-
-                                <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                    </div>
-                                    <div className="stat-title">Following</div>
-                                    <div className="stat-value text-gray-600">1,200</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="card bg-base-100 shadow-sm w-full">
-                    <div className="card-body">
-                        <div className="stat-figure text-secondary">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                className="inline-block h-7 w-7 stroke-current">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                            </svg>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                            <h2 className="text-2xl sm:text-3xl font-bold">{t("reposTitle")}</h2>
-                            <span className="text-xl">
-                                <button className="btn btn-square btn-ghost">
-                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                                </button>
-                            </span>
-                        </div>
-                        <ul className="mt-6 flex flex-col gap-2 text-xs">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                <span>{t("reposDesc")}</span>
-                            </li>
-                        </ul>
-                        <div className="mt-6">
-                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('repos')}>{t("useComponent")}</button>
-                        </div>
-                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                            .{t("preview")}
-                            <div className="stats shadow flex flex-col sm:flex-row">
-                                <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            className="inline-block h-8 w-8 stroke-current">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="stat-title">Collaborations</div>
-                                    <div className="stat-value text-secondary">100</div>
-                                </div>
-
-                                <div className="stat">
-                                    <div className="stat-figure text-secondary">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            className="inline-block h-8 w-8 stroke-current">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                                        </svg>
-                                    </div>
-                                    <div className="stat-title">Repositories</div>
-                                    <div className="stat-value text-gray-600">200</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card bg-base-100 shadow-sm w-full">
-                    <div className="card-body">
-                        <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                            <h2 className="text-2xl sm:text-3xl font-bold">{t("compareTitle")}</h2>
-                            <span className="text-xl">
-                                <button className="btn btn-square btn-ghost">
-                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                                </button>
-                            </span>
-                        </div>
-                        <ul className="mt-6 flex flex-col gap-2 text-xs">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                <span>{t("compareDesc")}</span>
-                            </li>
-                        </ul>
-                        <div className="mt-6">
-                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('compare')}>{t("useComponent")}</button>
-                        </div>
-
-                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                            .{t("preview")}
-                        </div>
-                    </div>
-                </div>
-                <UserComparison
+                <StarsStatsCard onUseClick={() => setOpenModal('stars')} />
+                <ReposStatsCard onUseClick={() => setOpenModal('repos')} />
+                <UserComparisonCard
+                    onUseClick={() => setOpenModal('compare')}
                     user1={demoUsers.user1}
                     user2={demoUsers.user2}
-                    onUserClick={(user) => {
-                        console.log('User clicked:', user.username);
-                        setSelectedUser(user);
-                        setOpenModal('userProfile');
-                    }}
+                    onUserClick={handleUserClick}
                 />
-
-                <div className="card bg-base-100 shadow-sm w-full">
-                    <div className="card-body">
-                        <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                            <h2 className="text-2xl sm:text-3xl font-bold">{t("collaboratorsTitle")}</h2>
-                            <span className="text-xl">
-                                <button className="btn btn-square btn-ghost">
-                                    <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                                </button>
-                            </span>
-                        </div>
-                        <ul className="mt-6 flex flex-col gap-2 text-xs">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                <span>{t("collaboratorsDesc")}</span>
-                            </li>
-                        </ul>
-                        <div className="mt-6">
-                            <button className="btn btn-primary w-full" onClick={() => setOpenModal('collaboratorsProfile')}>{t("useComponent")}</button>
-                        </div>
-
-                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                            .{t("preview")}
-                        </div>
-                        <CollaboratorsProfile />
-                    </div>
-                </div>
+                <CollaboratorsCard onUseClick={() => setOpenModal('collaboratorsProfile')} />
             </div>
             {openModal === 'stars' && (
                 <Modal
