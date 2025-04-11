@@ -5,12 +5,12 @@ interface PropsType {
     repos:string
 }
 import React, {useEffect, useState} from 'react'
-const CollaboratorsProfile:React.FC<PropsType> =({user, repos}) => {
-    const [col, setCol] = useState<[]|undefined>([])
-    useEffect(() => {
+    const CollaboratorsProfile:React.FC<PropsType> =({user, repos}) => {
+        const [col, setCol] = useState<[]|undefined>([])
+        useEffect(() => {
 
-        getReposInfo(user, repos).then((repos) => setCol(repos?.collaborators))
-    }, [user, repos])
+            getReposInfo(user, repos).then((repos) => setCol(repos?.collaborators))
+        }, [user, repos])
 
     return <>
 

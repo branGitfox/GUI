@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useTranslation } from "react-i18next";
+import {getReposInfo} from "../api/api.ts";
+
+
 
 const Footer: React.FC = () => {
     const { t } = useTranslation();
+
+    const [col, setCol] = useState<[]|undefined>([])
+    useEffect(() => {
+
+        getReposInfo("BranGitfox", "GUI").then((repos) => setCol(repos?.collaborators))
+    }, [])
     return (
         <><footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
             <aside>
@@ -20,26 +29,14 @@ const Footer: React.FC = () => {
             <nav>
                 <h6 className="footer-title">{t("contributorsTitle")}</h6>
                 <div className="avatar-group -space-x-6">
-                    <div className="avatar">
+                    {
+                    col?.map((col:{avatar_url:string, login:string}, index) => (
+                    <div className="avatar" key={index}>
                         <div className="w-12">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            <img src={col.avatar_url} alt={col.login+'_profile'}/>
                         </div>
                     </div>
-                    <div className="avatar">
-                        <div className="w-12">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <div className="avatar">
-                        <div className="w-12">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
-                    <div className="avatar">
-                        <div className="w-12">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </nav>
             <nav>
