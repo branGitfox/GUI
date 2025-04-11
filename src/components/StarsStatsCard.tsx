@@ -1,12 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
+import { getUserInfo, UserInfo } from '../api/api';
 
 interface StarsStatsCardProps {
     onUseClick: () => void;
+    user?: string;
 }
 
-const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick }) => {
+const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick, user}) => {
     const { t } = useTranslation();
+    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+
+    useEffect(()=>{
+        try {
+            getUserInfo(user!).then((res) => {
+                if (res) {      
+                    setUserInfo(res);
+                }
+            });
+        } catch (error) {
+            console.error("error:", error);
+        }
+    },[user])
 
     return (
         <div className="card bg-base-100 shadow-sm w-full">
@@ -55,8 +70,7 @@ const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick }) => {
                                 </svg>
                             </div>
                             <div className="stat-title">Stars</div>
-                            <div className="stat-value text-gray-600">31K</div>
-                            <div className="stat-desc">Jan 1st - Feb 1st</div>
+                            <div className="stat-value text-gray-600">{userInfo?.stars?.toLocaleString() ?? 'N/A'}</div>
                         </div>
 
                         <div className="stat">
@@ -74,7 +88,7 @@ const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick }) => {
                                 </svg>
                             </div>
                             <div className="stat-title">Followers</div>
-                            <div className="stat-value text-gray-600">4,200</div>
+                            <div className="stat-value text-gray-600">{userInfo?.followers?.toLocaleString() ?? 'N/A'}</div>
                         </div>
 
                         <div className="stat">
@@ -82,7 +96,7 @@ const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick }) => {
                                 <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
                             </div>
                             <div className="stat-title">Following</div>
-                            <div className="stat-value text-gray-600">1,200</div>
+                            <div className="stat-value text-gray-600">{userInfo?.following?.toLocaleString() ?? 'N/A'}</div>
                         </div>
                     </div>
                 </div>

@@ -235,7 +235,7 @@ const MyComponent = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <StarsStatsCard onUseClick={() => setOpenModal('stars')} />
+                <StarsStatsCard onUseClick={() => setOpenModal('stars')} user='AntoinnetRjuan'/>
                 <ReposStatsCard onUseClick={() => setOpenModal('repos')} />
                 <UserComparisonCard
                     onUseClick={() => setOpenModal('compare')}
