@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
         </footer>
             <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
                 <aside>
-                <p>{t("copyright", { year: new Date().getFullYear() })}</p>
+                <p>Copyright © {  new Date().getFullYear()}{t("copyright")}</p>
                 </aside>
             </footer>
         </>
