@@ -5,6 +5,7 @@ import UserComparison from './UserComparison';
 import { UserData } from '../types/userTypes';
 import { useTranslation } from "react-i18next";
 import CollaboratorsProfile from "./CollaboratorsProfile.tsx";
+import CodeSnippet from './CodeSnippet.tsx';
 
 const ComponentsList: React.FC = () => {
     const [openModal, setOpenModal] = useState<string | null>(null);
@@ -190,63 +191,19 @@ const MyComponent = () => {
         stars: {
             title: t("starsTitle"),
             content: (
-                <div>
-                    <p>Here is the code of Stars, followers and following Check.</p>
-                    <div className="mt-4">
-                        <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-bold">{t("implementCode")} :</h4>
-                            <button
-                                className="btn btn-sm btn-ghost"
-                                onClick={() => {
-                                    navigator.clipboard.writeText(``);
-                                    setIsCopied(true);
-                                    setTimeout(() => setIsCopied(false), 2000);
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                </svg>
-                                {isCopied ? t("copied") : t("copy")}
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-64">
-                        <pre className="text-sm whitespace-pre-wrap">
-                            {``}
-                        </pre>
-                    </div>
-                </div>
+                <CodeSnippet
+                    description={t("starsDescription")}
+                    code={``}
+                />
             )
         },
         repos: {
             title: t("reposTitle"),
             content: (
-                <div>
-                    <p>Here is the code of Repositories and collabs Check.</p>
-                    <div className="mt-4">
-                        <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-bold">{t("implementCode")} :</h4>
-                            <button
-                                className="btn btn-sm btn-ghost"
-                                onClick={() => {
-                                    navigator.clipboard.writeText(``);
-                                    setIsCopied(true);
-                                    setTimeout(() => setIsCopied(false), 2000);
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                </svg>
-                                {isCopied ? t("copied") : t("copy")}
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-64">
-                        <pre className="text-sm whitespace-pre-wrap">
-                            {``}
-                        </pre>
-                    </div>
-                </div>
+                <CodeSnippet
+                    description={t("repositoriesDescription")}
+                    code={``}
+                />
             )
         },
 
@@ -254,32 +211,10 @@ const MyComponent = () => {
         collaboratorsProfile: {
             title: t("collaboratorsTitle"),
             content: (
-                <div>
-                    <p>Here is the code of Collaborators Profile List</p>
-                    <div className="mt-4">
-                        <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-bold">{t("implementCode")} :</h4>
-                            <button
-                                className="btn btn-sm btn-ghost"
-                                onClick={() => {
-                                    navigator.clipboard.writeText(``);
-                                    setIsCopied(true);
-                                    setTimeout(() => setIsCopied(false), 2000);
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                </svg>
-                                {isCopied ? t("copied") : t("copy")}
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bg-base-200 p-4 rounded-lg overflow-auto max-h-64">
-                        <pre className="text-sm whitespace-pre-wrap">
-                            {``}
-                        </pre>
-                    </div>
-                </div>
+                <CodeSnippet
+                    description={t("collaboratorsDescription")}
+                    code={``}
+                />
             )
         },
     };
@@ -504,7 +439,7 @@ const MyComponent = () => {
                         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
                             .{t("preview")}
                         </div>
-                    <CollaboratorsProfile/>
+                        <CollaboratorsProfile />
                     </div>
                 </div>
             </div>

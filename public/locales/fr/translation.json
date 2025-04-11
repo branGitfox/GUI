@@ -45,5 +45,8 @@
   "totalContributors": "Total Contributeurs",
   "totalStars": "Total Étoiles",
   "new": "Nouveau",
-  "newContent": "Nouveau contenu disponible !"
+  "newContent": "Nouveau contenu disponible !",
+  "collaboratorsDescription": "Voici le code pour la liste des profils des collaborateurs",
+  "repositoriesDescription": "Voici le code pour la vérification des repositories et collaborations",
+  "starsDescription": "Voici le code pour la vérification des stars, followers et following"
 }

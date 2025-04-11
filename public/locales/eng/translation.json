@@ -44,5 +44,8 @@
   "totalContributors": "Total Contributors",
   "totalStars": "Total Stars",
   "new": "New",
-  "newContent": "New content available!"
+  "newContent": "New content available!",
+  "collaboratorsDescription": "Here is the code of Collaborators Profile List",
+  "repositoriesDescription": "Here is the code of Repositories & Collaborations Count Check",
+  "starsDescription": "Here is the code of Stars, Followers & Following Check"
 }
