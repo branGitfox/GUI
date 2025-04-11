@@ -40,7 +40,7 @@ const CollaboratorsCard: React.FC<CollaboratorsCardProps> = ({ onUseClick }) => 
         </div>
         <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
           .{t("preview")}
-          <CollaboratorsProfile />
+          <CollaboratorsProfile user="branGitfox" repos="GUI"  />
         </div>
       </div>
     </div>

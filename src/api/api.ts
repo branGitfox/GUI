@@ -9,14 +9,14 @@ interface UserInfo {
 interface RepositoryInfo{
     stars:number,
     fork:number,
-    collaborators:UserInfo[],
+    collaborators:[],
     link:string
 }
 
 
 
 
-export default async function getUserInfo(user:string): Promise<UserInfo|undefined>{
+async function getUserInfo(user:string): Promise<UserInfo|undefined>{
     try{
 
         const res =   await axios.get(`https://api.github.com/users/${user}`)
@@ -34,7 +34,7 @@ export default async function getUserInfo(user:string): Promise<UserInfo|undefin
 }
 
 
-export  async function getReposInfo(user:string,repos:string): Promise<RepositoryInfo|undefined>{
+  async function getReposInfo(user:string,repos:string): Promise<RepositoryInfo|undefined>{
     try{
 
         const res =   await axios.get(`https://api.github.com/repos/${user}/${repos}`)
@@ -50,4 +50,10 @@ export  async function getReposInfo(user:string,repos:string): Promise<Repositor
         console.log("ERR", err)
     }
 
+}
+
+
+export {
+    getUserInfo,
+    getReposInfo,
 }
