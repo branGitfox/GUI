@@ -14,7 +14,7 @@ const Hero:React.FC = () => {
                         <div className="inline-grid *:[grid-area:1/1] mb-5">
                             <div className="status status-success animate-ping"></div>
                             <div className="status status-success"></div>
-                        </div> <div className="badge badge-soft badge-primary">V1.0</div>
+                        </div> <div className="badge badge-soft badge-primary">{t('versionBadge')}</div>
                         <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">{t('title')}</h1>
                         <p className="py-6">
                             {t("description")}
@@ -40,7 +40,7 @@ const Hero:React.FC = () => {
                                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                     </div>
-                    <div className="stat-title">Total Utilisateurs</div>
+                    <div className="stat-title">{t('totalUsers')}</div>
                     <div className="stat-value text-primary">25.6K</div>
 
                 </div>
@@ -59,7 +59,7 @@ const Hero:React.FC = () => {
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <div className="stat-title">Toal Contributeurs</div>
+                    <div className="stat-title">{t('totalContributors')}</div>
                     <div className="stat-value text-secondary">2.6M</div>
 
                 </div>
@@ -73,10 +73,8 @@ const Hero:React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="stat-title">Total Etoiles</div>
+                    <div className="stat-title">{t('totalStars')}</div>
                     <div className="stat-value">100</div>
-
-
                 </div>
             </div>
         </>
