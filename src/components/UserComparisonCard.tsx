@@ -61,26 +61,28 @@ const UserComparisonCard: React.FC<UserComparisonCardProps> = ({
             </button>
           </span>
           </div>
-
           <ul className="mt-6 flex flex-col gap-2 text-xs">
-            <li>
-              <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-4 me-2 inline-block text-success"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-              >
-                <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                />
-              </svg>
+            <li className="flex items-center gap-2">
+              <div className="bg-green-500 text-dark rounded-full p-0.5">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-2 h-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="black"
+                >
+                  <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="3"
+                      d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
               <span>{t('compareDesc')}</span>
             </li>
           </ul>
+
 
           <div className="mt-6">
             <button className="btn btn-primary w-full" onClick={onUseClick}>
