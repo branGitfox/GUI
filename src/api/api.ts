@@ -13,13 +13,14 @@ export interface RepositoryInfo{
     link:string
 }
 
-
+const client_id = import.meta.env.VITE_CLIENT_ID
+const client_secret = import.meta.env.VITE_CLIENT_SECRET
 
 
 async function getUserInfo(user:string): Promise<UserInfo|undefined>{
     try{
 
-        const res =   await axios.get(`https://api.github.com/users/${user}`)
+        const res =   await axios.get(`https://api.github.com/users/${user}?client_id=${client_id}&client_secret=${client_secret}`)
         return {
             stars:10,
             followers:res.data.followers,
@@ -37,8 +38,8 @@ async function getUserInfo(user:string): Promise<UserInfo|undefined>{
   async function getReposInfo(user:string,repos:string): Promise<RepositoryInfo|undefined>{
     try{
 
-        const res =   await axios.get(`https://api.github.com/repos/${user}/${repos}`)
-        const collaboratorsList = await axios.get(res.data.contributors_url)
+        const res =   await axios.get(`https://api.github.com/repos/${user}/${repos}?client_id=${client_id}&client_secret=${client_secret}`)
+        const collaboratorsList = await axios.get(res.data.contributors_url+`?client_id=${client_id}&client_secret=${client_secret}`)
        return {
            stars:res.data.stargazers_count,
            fork:res.data.forks_count,
