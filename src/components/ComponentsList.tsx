@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState } from 'react'
 import Modal from './Modal'
 import UserComparison from './UserComparison';
 import { UserData } from '../types/userTypes';
@@ -11,8 +11,8 @@ import ReposStatsCard from './ReposStatsCard.tsx';
 import UserComparisonCard from './UserComparisonCard.tsx';
 
 const ComponentsList: React.FC = () => {
-    const [openModal, setOpenModal] = useState<string | null>(null);
-    const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
+    const [openModal, setOpenModal] = useState<string | null>(null)
+    const [selectedUser, setSelectedUser] = useState<UserData | null>(null)
     const [showCode, setShowCode] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const { t } = useTranslation()
