@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {getReposInfo, RepositoryInfo} from "../api/api.ts";
 
 const Hero:React.FC = () => {
     const {t} = useTranslation()
+    const [datas, setDatas] = useState<RepositoryInfo>()
+    getReposInfo("BranGitfox", "GUI").then(({data}) => setDatas(data))
+
+    console.log(datas)
     return (
         <>
             <div className="hero bg-base-200 mt-15 lg:mt-0">
@@ -41,7 +46,7 @@ const Hero:React.FC = () => {
                         </svg>
                     </div>
                     <div className="stat-title">{t('totalUsers')}</div>
-                    <div className="stat-value text-primary">25.6K</div>
+                    <div className="stat-value text-primary">100+</div>
 
                 </div>
 
@@ -60,7 +65,7 @@ const Hero:React.FC = () => {
                         </svg>
                     </div>
                     <div className="stat-title">{t('totalContributors')}</div>
-                    <div className="stat-value text-secondary">2.6M</div>
+                    <div className="stat-value text-secondary">{datas?.collaborations.length}</div>
 
                 </div>
 
@@ -74,7 +79,7 @@ const Hero:React.FC = () => {
                         </div>
                     </div>
                     <div className="stat-title">{t('totalStars')}</div>
-                    <div className="stat-value">100</div>
+                    <div className="stat-value">{datas?.stars}</div>
                 </div>
             </div>
         </>
