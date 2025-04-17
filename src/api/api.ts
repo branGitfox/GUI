@@ -4,6 +4,8 @@ export interface UserInfo {
     followers:number,
     following:number,
     repositoryCount: number
+    avatarUrl:string,
+    login:string
 }
 
 export interface RepositoryInfo{
@@ -21,11 +23,19 @@ async function getUserInfo(user:string): Promise<UserInfo|undefined>{
     try{
 
         const res =   await axios.get(`https://api.github.com/users/${user}?client_id=${client_id}&client_secret=${client_secret}`)
+        const stars = await axios.get(res?.data?.repos_url+`?client_id=${client_id}&client_secret=${client_secret}`)
+        let starsCount:number = 0
+        stars.data.map((star:{stargazers_count:number}) => {
+           starsCount += star?.stargazers_count
+        })
+
         return {
-            stars:10,
+            stars:starsCount,
             followers:res.data.followers,
             following:res.data.following,
-            repositoryCount:res.data.public_repos
+            repositoryCount:res.data.public_repos,
+            login:res.data.login,
+            avatarUrl:res.data.avatar_url
         }
 
     }catch (err){

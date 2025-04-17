@@ -1,16 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import UserComparison from './UserComparison';
-import { UserData } from '../types/userTypes';
+import {UserComparisonProps} from '../types/userTypes';
+// import {UserInfo} from "../api/api.ts";
 
-interface UserComparisonCardProps {
-  onUseClick: () => void;
-  user1: UserData;
-  user2: UserData;
-  onUserClick: (user: UserData) => void;
-}
+// interface UserComparisonCardProps {
+//   onUseClick: () => void;
+//   user1: UserData;
+//   user2: UserData;
+//   onUserClick: (user: UserInfo|undefined) => void;
+// }
 
-const UserComparisonCard: React.FC<UserComparisonCardProps> = ({
+const UserComparisonCard: React.FC<UserComparisonProps> = ({
                                                                  onUseClick,
                                                                  user1,
                                                                  user2,

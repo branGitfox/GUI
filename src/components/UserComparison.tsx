@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { UserComparisonProps } from '../types/userTypes';
+import {getUserInfo, UserInfo} from "../api/api.ts";
 
 const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserClick }) => {
   const [position, setPosition] = useState(50);
+    const [userOne, setUser1]= useState<UserInfo|undefined>()
 
+    const [userTwo, setUser2]= useState<UserInfo|undefined>()
+    getUserInfo(user1).then((info:UserInfo|undefined) => setUser1(info))
+    getUserInfo(user2).then((info:UserInfo|undefined) => setUser2(info))
   return (
     <div className="w-full relative h-64 rounded-lg overflow-hidden">
       <div
@@ -12,15 +17,15 @@ const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserCli
           width: `${position}%`,
           zIndex: 2
         }}
-        onClick={() => onUserClick?.(user1)}
+        onClick={() => onUserClick?.(userOne)}
       >
         <img
-          src={user1.avatarUrl}
-          alt={user1.username}
+          src={userOne?.avatarUrl}
+          alt={userOne?.login}
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-center">
-          {user1.username}
+          {userOne?.login}
         </div>
       </div>
       <div
@@ -29,15 +34,15 @@ const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserCli
           width: `${100 - position}%`,
           zIndex: 2
         }}
-        onClick={() => onUserClick?.(user2)}
+        onClick={() => onUserClick?.(userTwo)}
       >
         <img
-          src={user2.avatarUrl}
-          alt={user2.username}
+          src={userTwo?.avatarUrl}
+          alt={userTwo?.login}
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-center">
-          {user2.username}
+          {userTwo?.login}
         </div>
       </div>
       <div
