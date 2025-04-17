@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { UserComparisonProps } from '../types/userTypes';
 import {getUserInfo, UserInfo} from "../api/api.ts";
-
+import {useEffect} from "react";
 const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserClick }) => {
   const [position, setPosition] = useState(50);
     const [userOne, setUser1]= useState<UserInfo|undefined>()
 
     const [userTwo, setUser2]= useState<UserInfo|undefined>()
-    getUserInfo(user1).then((info:UserInfo|undefined) => setUser1(info))
-    getUserInfo(user2).then((info:UserInfo|undefined) => setUser2(info))
+
+    useEffect(() => {
+        getUserInfo(user1).then((info:UserInfo|undefined) => setUser1(info))
+        getUserInfo(user2).then((info:UserInfo|undefined) => setUser2(info))
+    }, [user1, user2])
+
   return (
     <div className="w-full relative h-64 rounded-lg overflow-hidden">
       <div

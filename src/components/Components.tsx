@@ -45,8 +45,11 @@ const ReposStatsCard: React.FC<ReposStatsCardProps2> = ({ onUseClick, user, repo
     const { t } = useTranslation();
     const [reposInfo, setReposInfo] = useState<RepositoryInfo|undefined>()
     const [userInfo, setUserInfo] = useState<UserInfo|undefined>()
-    getReposInfo(user, repos).then((data:RepositoryInfo|undefined) => setReposInfo(data))
-    getUserInfo(user).then((data:UserInfo|undefined) => setUserInfo(data))
+    useEffect(() => {
+        getReposInfo(user, repos).then((data:RepositoryInfo|undefined) => setReposInfo(data))
+        getUserInfo(user).then((data:UserInfo|undefined) => setUserInfo(data))
+    }, [user])
+
 
     return (
         <div className="card bg-base-100 shadow-sm w-full">
@@ -232,8 +235,11 @@ const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserCli
     const [userOne, setUser1]= useState<UserInfo|undefined>()
 
     const [userTwo, setUser2]= useState<UserInfo|undefined>()
-    getUserInfo(user1).then((info:UserInfo|undefined) => setUser1(info))
-    getUserInfo(user2).then((info:UserInfo|undefined) => setUser2(info))
+    useEffect(() => {
+
+        getUserInfo(user1).then((info:UserInfo|undefined) => setUser1(info))
+        getUserInfo(user2).then((info:UserInfo|undefined) => setUser2(info))
+    }, [user1, user2]);
     return (
         <div className="w-full relative h-64 rounded-lg overflow-hidden">
             <div

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useTranslation } from 'react-i18next';
 import {getReposInfo, getUserInfo, RepositoryInfo, UserInfo} from "../api/api.ts";
 
@@ -12,8 +12,11 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user, repos
     const { t } = useTranslation();
     const [reposInfo, setReposInfo] = useState<RepositoryInfo|undefined>()
     const [userInfo, setUserInfo] = useState<UserInfo|undefined>()
-    getReposInfo(user, repos).then((data:RepositoryInfo|undefined) => setReposInfo(data))
-    getUserInfo(user).then((data:UserInfo|undefined) => setUserInfo(data))
+    useEffect(() => {
+        getReposInfo(user, repos).then((data:RepositoryInfo|undefined) => setReposInfo(data))
+        getUserInfo(user).then((data:UserInfo|undefined) => setUserInfo(data))
+    }, [user, repos])
+
 
     return (
         <div className="card bg-base-100 shadow-sm w-full">
