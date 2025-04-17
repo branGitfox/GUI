@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 const Hero:React.FC = () => {
     const {t} = useTranslation()
     const [datas, setDatas] = useState<RepositoryInfo|undefined>()
-    getReposInfo("BranGitfox", "GUI").then(({data}:RepositoryInfo|undefined) => setDatas(data))
+    getReposInfo("BranGitfox", "GUI").then((data:RepositoryInfo|undefined) => setDatas(data))
 
     console.log(datas)
     return (
