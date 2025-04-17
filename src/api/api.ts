@@ -21,13 +21,15 @@ const client_secret = import.meta.env.VITE_CLIENT_SECRET
 
 async function getUserInfo(user:string): Promise<UserInfo|undefined>{
     try{
-
-        const res =   await axios.get(`https://api.github.com/users/${user}?client_id=${client_id}&client_secret=${client_secret}`)
-        const stars = await axios.get(res?.data?.repos_url+`?client_id=${client_id}&client_secret=${client_secret}`)
         let starsCount:number = 0
-        stars.data.map((star:{stargazers_count:number}) => {
-           starsCount += star?.stargazers_count
+        const res =   await axios.get(`https://api.github.com/users/${user}?client_id=${client_id}&client_secret=${client_secret}`)
+        await axios.get(res?.data?.repos_url+`?client_id=${client_id}&client_secret=${client_secret}`).then((res) => {
+            res.data.map((star:{stargazers_count:number}) => {
+                starsCount += star?.stargazers_count
+            })
         })
+
+
 
         return {
             stars:starsCount,

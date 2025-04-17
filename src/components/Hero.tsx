@@ -8,7 +8,7 @@ const Hero:React.FC = () => {
     const [datas, setDatas] = useState<RepositoryInfo|undefined>()
     getReposInfo("BranGitfox", "GUI").then((data:RepositoryInfo|undefined) => setDatas(data))
 
-    console.log(datas)
+
     return (
         <>
             <div className="hero bg-base-200 mt-15 lg:mt-0">
