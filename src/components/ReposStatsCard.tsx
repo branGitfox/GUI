@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useTranslation } from 'react-i18next';
+import {getReposInfo, getUserInfo, RepositoryInfo, UserInfo} from "../api/api.ts";
 
 interface ReposStatsCardProps {
-    onUseClick: () => void;
+    onUseClick: () => void,
+    user:string,
+    repos:string
 }
 
-const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
+const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user, repos }) => {
     const { t } = useTranslation();
+    const [reposInfo, setReposInfo] = useState<RepositoryInfo|undefined>()
+    const [userInfo, setUserInfo] = useState<UserInfo|undefined>()
+    getReposInfo(user, repos).then((data:RepositoryInfo|undefined) => setReposInfo(data))
+    getUserInfo(user).then((data:UserInfo|undefined) => setUserInfo(data))
 
     return (
         <div className="card bg-base-100 shadow-sm w-full">
@@ -64,7 +71,7 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
                             </svg>
                         </div>
                         <div className="stat-title">Collaborations</div>
-                        <div className="stat-value text-secondary">100</div>
+                        <div className="stat-value text-secondary">{reposInfo?.collaborators.length}</div>
                     </div>
 
                     <div className="stat">
@@ -82,7 +89,7 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick }) => {
                             </svg>
                         </div>
                         <div className="stat-title">Repositories</div>
-                        <div className="stat-value text-gray-600">200</div>
+                        <div className="stat-value text-gray-600">{userInfo?.repositoryCount}</div>
                     </div>
                 </div>
             </div>
