@@ -206,14 +206,14 @@ const MyComponent = () => {
         <div className="container mx-auto px-4 mt-12">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-0 py-6">
                 <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left">{t("component")}</h1>
-                <div className='flex justify-center md:justify-end'>
-                    <label className="input input-bordered flex items-center gap-2 w-full md:w-auto">
-                        <svg className="h-4 w-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
-                        <input type="search" className="grow" placeholder={t("search")} />
-                        <kbd className="kbd kbd-sm hidden md:inline-flex">⌘</kbd>
-                        <kbd className="kbd kbd-sm hidden md:inline-flex">K</kbd>
-                    </label>
-                </div>
+                {/*<div className='flex justify-center md:justify-end'>*/}
+                {/*    <label className="input input-bordered flex items-center gap-2 w-full md:w-auto">*/}
+                {/*        <svg className="h-4 w-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>*/}
+                {/*        <input type="search" className="grow" placeholder={t("search")} />*/}
+                {/*        <kbd className="kbd kbd-sm hidden md:inline-flex">⌘</kbd>*/}
+                {/*        <kbd className="kbd kbd-sm hidden md:inline-flex">K</kbd>*/}
+                {/*    </label>*/}
+                {/*</div>*/}
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <StarsStatsCard onUseClick={() => setOpenModal('stars')} user='AntoinnetRjuan'/>
