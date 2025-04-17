@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
 import {getReposInfo, RepositoryInfo} from "../api/api.ts";
+import {Link} from "react-router-dom";
 
 const Hero:React.FC = () => {
     const {t} = useTranslation()
@@ -24,8 +25,8 @@ const Hero:React.FC = () => {
                         <p className="py-6">
                             {t("description")}
                         </p>
-                        <button className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">{t('startBtn')}</button>
-                        <button className="btn  border-2 bg-transparent border-blue-600  mx-2">{t("useBtn")}</button>
+                        <a href="#install" className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">{t('startBtn')}</a>
+                        <Link to="/components" className="btn  border-2 bg-transparent border-blue-600  mx-2">{t("useBtn")}</Link>
                     </div>
                 </div>
             </div>
