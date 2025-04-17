@@ -12,7 +12,7 @@ babel.config.js
 tests/
 coverage/
 
-.env.local
+
 .vite/
 *.test.ts
 *.spec.ts
