@@ -51,36 +51,7 @@ const ComponentsList: React.FC = () => {
                                     className="btn btn-sm btn-ghost"
                                     onClick={() => {
                                         navigator.clipboard.writeText(`import UserComparison from './UserComparison';
-
-const MyComponent = () => {
-  const user1 = {
-    username: "VotreProfil",
-    stars: 124,
-    followers: 423,
-    following: 56,
-    repos: 32,
-    collaborations: 18,
-    avatarUrl: "https://avatars.githubusercontent.com/u/VOTRE_ID?v=4"
-  };
-
-  const user2 = {
-    username: "AutreUtilisateur",
-    stars: 456,
-    followers: 789,
-    following: 123,
-    repos: 65,
-    collaborations: 32,
-    avatarUrl: "https://avatars.githubusercontent.com/u/AUTRE_ID?v=4"
-  };
-
-  return (
-    <UserComparison 
-      user1={user1} 
-      user2={user2} 
-      onUserClick={(user) => console.log('User clicked:', user)}
-    />
-  );
-};`);
+`);
                                         setIsCopied(true);
                                         setTimeout(() => setIsCopied(false), 2000);
                                     }}
