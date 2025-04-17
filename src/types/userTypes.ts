@@ -1,3 +1,5 @@
+import {UserInfo} from "../api/api.ts";
+
 export interface UserData {
     username: string;
     stars: number;
@@ -9,7 +11,9 @@ export interface UserData {
 }
 
 export interface UserComparisonProps {
-    user1: UserData;
-    user2: UserData;
-    onUserClick?: (user: UserData) => void;
+    user1: string;
+    user2: string;
+    onUserClick?: (user: UserInfo|undefined) => void;
+    onUseClick?:() => void
+
 }

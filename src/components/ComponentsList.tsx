@@ -2,42 +2,23 @@ import React from 'react'
 import { useState } from 'react'
 import Modal from './Modal'
 import UserComparison from './UserComparison';
-import { UserData } from '../types/userTypes';
+
 import { useTranslation } from "react-i18next";
 import CollaboratorsCard from './CollaboratorsCard.tsx';
 import CodeSnippet from './CodeSnippet.tsx';
 import StarsStatsCard from './StarsStatsCard.tsx';
 import ReposStatsCard from './ReposStatsCard.tsx';
 import UserComparisonCard from './UserComparisonCard.tsx';
+import {UserInfo} from "../api/api.ts";
 
 const ComponentsList: React.FC = () => {
     const [openModal, setOpenModal] = useState<string | null>(null)
-    const [selectedUser, setSelectedUser] = useState<UserData | null>(null)
+    const [selectedUser, setSelectedUser] = useState<UserInfo | undefined>()
     const [showCode, setShowCode] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const { t } = useTranslation()
 
-    const demoUsers: { user1: UserData; user2: UserData } = {
-        user1: {
-            username: "VotreProfil",
-            stars: 124,
-            followers: 423,
-            following: 56,
-            repos: 32,
-            collaborations: 18,
-            avatarUrl: "https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a.webp"
-        },
-        user2: {
-            username: "AutreUtilisateur",
-            stars: 456,
-            followers: 789,
-            following: 123,
-            repos: 65,
-            collaborations: 32,
-            avatarUrl: "https://img.daisyui.com/images/stock/photo-1560717789-0ac7c58ac90a-blur.webp"
-        }
-    };
-    const handleUserClick = (user: UserData) => {
+    const handleUserClick = (user: UserInfo|undefined) => {
         setSelectedUser(user);
         setOpenModal('userProfile');
         setShowCode(false);
@@ -48,8 +29,8 @@ const ComponentsList: React.FC = () => {
             content: (
                 <div>
                     <UserComparison
-                        user1={demoUsers.user1}
-                        user2={demoUsers.user2}
+                        user1={"BranGitfox"}
+                        user2={"AntoinnetRjuan"}
                         onUserClick={handleUserClick}
                     />
 
@@ -151,16 +132,16 @@ const MyComponent = () => {
             )
         },
         userProfile: {
-            title: selectedUser ? `${selectedUser.username} - ${t("profileTitle")}` : t("profileTitle"),
+            title: selectedUser ? `${selectedUser.login} - ${t("profileTitle")}` : t("profileTitle"),
             content: selectedUser && (
                 <div className="space-y-4">
                     <div className="flex items-center gap-4">
                         <img
                             src={selectedUser.avatarUrl}
-                            alt={selectedUser.username}
+                            alt={selectedUser.login}
                             className="w-16 h-16 rounded-full"
                         />
-                        <h3 className="text-2xl font-bold">{selectedUser.username}</h3>
+                        <h3 className="text-2xl font-bold">{selectedUser.login}</h3>
                     </div>
 
                     <div className="stats shadow">
@@ -181,12 +162,12 @@ const MyComponent = () => {
                     <div className="stats shadow">
                         <div className="stat">
                             <div className="stat-title">Repositories</div>
-                            <div className="stat-value">{selectedUser.repos}</div>
+                            <div className="stat-value">{selectedUser.repositoryCount}</div>
                         </div>
-                        <div className="stat">
-                            <div className="stat-title">Collaborations</div>
-                            <div className="stat-value">{selectedUser.collaborations}</div>
-                        </div>
+                        {/*<div className="stat">*/}
+                        {/*    <div className="stat-title">Collaborations</div>*/}
+                        {/*    <div className="stat-value">{selectedUser..length}</div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             )
@@ -239,8 +220,8 @@ const MyComponent = () => {
                 <ReposStatsCard onUseClick={() => setOpenModal('repos')} user={"BranGitfox"} repos={"GUI"}/>
                 <UserComparisonCard
                     onUseClick={() => setOpenModal('compare')}
-                    user1={demoUsers.user1}
-                    user2={demoUsers.user2}
+                    user1="BranGitfox"
+                    user2={"AntoinnetRjuan"}
                     onUserClick={handleUserClick}
                 />
                 <CollaboratorsCard onUseClick={() => setOpenModal('collaboratorsProfile')} />
