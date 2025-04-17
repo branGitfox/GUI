@@ -5,7 +5,13 @@
 > ✨ Installable en un seul clic via NPM : `npm install gui-react`
 
 ---
+## Pre-requis
+[@tailwindcss](https://tailwindcss.com/)/[@daisyui](https://daisyui.com/)
+```bash
 
+npm install daisyui
+
+```
 ## 📦 Installation
 
 ```bash
