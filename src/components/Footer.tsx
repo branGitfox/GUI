@@ -41,9 +41,9 @@ const Footer: React.FC = () => {
             </nav>
             <nav>
                 <h6 className="footer-title">{t("contributeTitle")}</h6>
-                <a className="link link-hover">{t("github")}</a>
-                <a className="link link-hover">{t("license")}</a>
-                <a className="link link-hover">{t("terms")}</a>
+                <a href="https://github.com/branGitfox/GUI" target="_blank" className="link link-hover">{t("github")}</a>
+                <a href="https://github.com/branGitfox/GUI/blob/master/LICENSE" target="_blank" className="link link-hover">{t("license")}</a>
+                <a href="https://github.com/branGitfox/GUI/blob/master/Contribution.md" target="_blank" className="link link-hover">{t("terms")}</a>
             </nav>
         </footer>
             <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
