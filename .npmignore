@@ -1,6 +1,6 @@
 # Ne pas publier ces fichiers/dossiers sur npm
 node_modules/
-src/
+
 .vscode/
 .git/
 .gitignore

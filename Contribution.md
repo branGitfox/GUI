@@ -27,4 +27,4 @@ Avant de commencer à contribuer, assurez-vous d’avoir installé :
 ```bash
 git clone https://github.com/BranGitfox/gui-smoky.git
 cd gui-smoky
-pnpm install
+pnpm install  or npm install or yarn install 
