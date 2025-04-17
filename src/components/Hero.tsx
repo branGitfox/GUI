@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Hero:React.FC = () => {
     const {t} = useTranslation()
-    const [datas, setDatas] = useState<RepositoryInfo>()
+    const [datas, setDatas] = useState<RepositoryInfo|undefined>()
     getReposInfo("BranGitfox", "GUI").then(({data}:RepositoryInfo|undefined) => setDatas(data))
 
     console.log(datas)
@@ -66,7 +66,7 @@ const Hero:React.FC = () => {
                         </svg>
                     </div>
                     <div className="stat-title">{t('totalContributors')}</div>
-                    <div className="stat-value text-secondary">{datas?.collaborations.length}</div>
+                    <div className="stat-value text-secondary">{datas?.collaborators.length}</div>
 
                 </div>
 
