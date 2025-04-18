@@ -17,3 +17,5 @@
 
 ```bash
 npm install react-guis
+```
+### [Demo](https://gui-smoky.vercel.app/)
