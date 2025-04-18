@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Modal from './Modal'
-import UserComparison from './UserComparison';
+import UserComparison from '../ui/UserComparison.tsx';
 
 import { useTranslation } from "react-i18next";
 import CollaboratorsCard from './CollaboratorsCard.tsx';

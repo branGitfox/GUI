@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import CollaboratorsProfile from './CollaboratorsProfile';
+import CollaboratorsProfile from '../ui/CollaboratorsProfile.tsx';
 
 interface CollaboratorsCardProps {
   onUseClick: () => void;

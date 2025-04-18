@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import StarsComponent from "./StarsComponent.tsx";
+import StarsComponent from "../ui/StarsComponent.tsx";
 
 interface StarsStatsCardProps {
     onUseClick: () => void;

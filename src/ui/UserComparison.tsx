@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserComparisonProps } from '../types/userTypes';
+import { UserComparisonProps } from '../types/userTypes.ts';
 import {getUserInfo, UserInfo} from "../api/api.ts";
 import {useEffect} from "react";
 const UserComparison: React.FC<UserComparisonProps> = ({ user1, user2, onUserClick }) => {

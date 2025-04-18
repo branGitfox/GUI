@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import UserComparison from './UserComparison';
+import UserComparison from '../ui/UserComparison.tsx';
 import {UserComparisonProps} from '../types/userTypes';
 // import {UserInfo} from "../api/api.ts";
 
