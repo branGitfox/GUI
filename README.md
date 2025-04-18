@@ -8,8 +8,9 @@
 ## Pre-requis
 [@tailwindcss](https://tailwindcss.com/)/[@daisyui](https://daisyui.com/)
 ```bash
-
-npm install daisyui
+#Copier et coller ces deux CDN dans votre index.html
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 ```
 ## 📦 Installation
