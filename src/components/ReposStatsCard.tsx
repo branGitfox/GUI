@@ -1,28 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-<<<<<<< HEAD
-import { getUserInfo, UserInfo } from '../api/api';
-
-interface ReposStatsCardProps {
-    onUseClick: () => void;
-    user?: string;
-}
-
-const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user }) => {
-    const { t } = useTranslation();
-    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-    useEffect(() => {
-        try {
-            getUserInfo(user!).then((res) => {
-                if (res) {
-                    setUserInfo(res);
-                }
-            });
-        } catch (error) {
-            console.error("error:", error);
-        }
-    }, [user]);
-=======
 import ReposComponents from "../ui/ReposComponents.tsx";
 
 interface ReposStatsCardProps {
@@ -34,8 +11,6 @@ interface ReposStatsCardProps {
 const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user, repos }) => {
     const { t } = useTranslation();
 
-
->>>>>>> 52145d052e8d127f12f69d400431575053355b9c
     return (
         <div className="card bg-base-100 shadow-sm w-full">
             <div className="card-body">
@@ -54,48 +29,6 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user, repos
                         </svg>
                     </button>
                 </div>
-<<<<<<< HEAD
-                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                    .{t("preview")}
-                    <div className="stats shadow flex flex-col sm:flex-row">
-                        <div className="stat">
-                            <div className="stat-figure text-secondary">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    className="inline-block h-8 w-8 stroke-current">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <div className="stat-title">Collaborations</div>
-                            <div className="stat-value text-secondary">2</div>
-                        </div>
-
-                        <div className="stat">
-                            <div className="stat-figure text-secondary">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    className="inline-block h-8 w-8 stroke-current">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                                </svg>
-                            </div>
-                            <div className="stat-title">Repositories</div>
-                            <div className="stat-value text-gray-600">{userInfo?.repositoryCount?.toLocaleString() ?? 'N/A'}</div>
-                        </div>
-                    </div>
-=======
-
                 <ul className="mt-6 flex flex-col gap-2 text-sm">
                     <li className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-green-500 me-2" fill="currentColor" viewBox="0 0 20 20">
@@ -109,7 +42,7 @@ const ReposStatsCard: React.FC<ReposStatsCardProps> = ({ onUseClick, user, repos
                     <button className="btn btn-primary w-full" onClick={onUseClick}>
                         {t('useComponent')}
                     </button>
->>>>>>> 52145d052e8d127f12f69d400431575053355b9c
+
                 </div>
 
                 <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">

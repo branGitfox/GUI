@@ -217,11 +217,9 @@ const MyComponent = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <StarsStatsCard onUseClick={() => setOpenModal('stars')} user='AntoinnetRjuan'/>
-<<<<<<< HEAD
-                <ReposStatsCard onUseClick={() => setOpenModal('repos')} user='AntoinnetRjuan'/>
-=======
+
+                
                 <ReposStatsCard onUseClick={() => setOpenModal('repos')} user={"BranGitfox"} repos={"GUI"}/>
->>>>>>> 52145d052e8d127f12f69d400431575053355b9c
                 <UserComparisonCard
                     onUseClick={() => setOpenModal('compare')}
                     user1="BranGitfox"
