@@ -32,4 +32,23 @@ function App() {
     )
 }
 ```
+# Vous pouvez aussi utiliser les fonctions d'API 
+`getUserInfo()` et `getReposInfo()`
+
+```tsx
+import {getUserInfo, getReposInfo} from "react-guis/src/api/api.ts"
+import {useEffect} from "react";
+
+function App() {
+    useEffect(() => {
+        getUserInfo("branGitfox").then((data) => console.log(data)) //objet
+        getReposInfo("branGitfox", "GUI").then((data) => console.log(data)) //objet que vous pourriez exploiter avec le style que vous voulez
+    }, [])
+    return (
+        <>
+            ...
+        </>
+    )
+}
+```
 ### [Demo](https://gui-smoky.vercel.app/)
