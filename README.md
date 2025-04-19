@@ -18,4 +18,18 @@
 ```bash
 npm install react-guis
 ```
+## Usage
+
+```tsx
+import ReposComponents from "react-gui/src/ui/ReposComponent";
+import StarsComponent from "react-gui/src/ui/StarsComponent";
+function App() {
+    return (
+        <>
+        <ReposComponents user="user" repos="repos_name"/>
+            <StarsComponent user="user"/>
+        </>
+    )
+}
+```
 ### [Demo](https://gui-smoky.vercel.app/)
