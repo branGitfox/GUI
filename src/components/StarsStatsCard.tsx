@@ -1,106 +1,52 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { getUserInfo, UserInfo } from '../api/api';
+
+import StarsComponent from "../ui/StarsComponent.tsx";
 
 interface StarsStatsCardProps {
     onUseClick: () => void;
-    user?: string;
+    user: string;
 }
 
-const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick, user}) => {
+const StarsStatsCard: React.FC<StarsStatsCardProps> = ({ onUseClick, user }) => {
     const { t } = useTranslation();
-    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
-
-    useEffect(()=>{
-        try {
-            getUserInfo(user!).then((res) => {
-                if (res) {      
-                    setUserInfo(res);
-                }
-            });
-        } catch (error) {
-            console.error("error:", error);
-        }
-    },[user])
 
     return (
         <div className="card bg-base-100 shadow-sm w-full">
             <div className="card-body">
-                <div className="mask mask-star-2 bg-orange-400 h-7 w-7"></div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold">{t("starsTitle")}</h2>
-                    <span className="text-xl">
-                        <button className="btn btn-square btn-ghost">
-                            <svg className="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor">
-                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
-                                </g>
-                            </svg>
-                        </button>
-                    </span>
-                </div>
-                <ul className="mt-6 flex flex-col gap-2 text-xs">
-                    <li>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-2">
+                        <div className="mask mask-star-2 bg-yellow-400 h-6 w-6"></div>
+                        <h2 className="text-2xl sm:text-3xl font-bold">{t('starsTitle')}</h2>
+                    </div>
+                    <button className="btn btn-square btn-ghost">
+                        <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5v14l7-5 7 5V5a2 2 0 00-2-2H7a2 2 0 00-2 2z" />
                         </svg>
-                        <span>{t("starsDesc")}</span>
-                    </li>
-                </ul>
-                <div className="mt-6">
-                    <button className="btn btn-primary w-full" onClick={onUseClick}>
-                        {t("useComponent")}
                     </button>
                 </div>
-                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mt-4">
-                    .{t("preview")}
-                    <div className="stats shadow flex flex-col sm:flex-row">
-                        <div className="stat">
-                            <div className="stat-figure text-secondary">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    className="inline-block h-8 w-8 stroke-current">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div className="stat-title">Stars</div>
-                            <div className="stat-value text-gray-600">{userInfo?.stars?.toLocaleString() ?? 'N/A'}</div>
-                        </div>
 
-                        <div className="stat">
-                            <div className="stat-figure text-secondary">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    className="inline-block h-8 w-8 stroke-current">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                                </svg>
-                            </div>
-                            <div className="stat-title">Followers</div>
-                            <div className="stat-value text-gray-600">{userInfo?.followers?.toLocaleString() ?? 'N/A'}</div>
-                        </div>
+                <ul className="text-sm flex flex-col gap-2">
+                    <li className="flex items-center">
+                        <svg className="w-4 h-4 text-yellow-500 me-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l2.9 6.2L22 9.3l-5 4.9L18.2 22 12 18.3 5.8 22 7 14.2 2 9.3l7.1-1.1L12 2z" />
+                        </svg>
+                        <span>{t('starsDesc')}</span>
+                    </li>
+                </ul>
 
-                        <div className="stat">
-                            <div className="stat-figure text-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                            </div>
-                            <div className="stat-title">Following</div>
-                            <div className="stat-value text-gray-600">{userInfo?.following?.toLocaleString() ?? 'N/A'}</div>
-                        </div>
-                    </div>
+                <div className="mt-6">
+                    <button className="btn btn-primary w-full" onClick={onUseClick}>
+                        {t('useComponent')}
+                    </button>
                 </div>
-            </div>
+
+                <div className="mt-6 text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                    .{t('preview')}
+                </div>
+                <StarsComponent user={user}/>
+</div>
+
         </div>
     );
 };

@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {useTranslation} from "react-i18next";
+import {getReposInfo, RepositoryInfo} from "../api/api.ts";
+import {Link} from "react-router-dom";
 
 const Hero:React.FC = () => {
     const {t} = useTranslation()
+    const [datas, setDatas] = useState<RepositoryInfo|undefined>()
+    getReposInfo("BranGitfox", "GUI").then((data:RepositoryInfo|undefined) => setDatas(data))
+
+
     return (
         <>
             <div className="hero bg-base-200 mt-15 lg:mt-0">
@@ -19,8 +25,8 @@ const Hero:React.FC = () => {
                         <p className="py-6">
                             {t("description")}
                         </p>
-                        <button className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">{t('startBtn')}</button>
-                        <button className="btn  border-2 bg-transparent border-blue-600  mx-2">{t("useBtn")}</button>
+                        <a href="#install" className="btn btn-primary bg-gradient-to-r from-blue-600 to-violet-600">{t('startBtn')}</a>
+                        <Link to="/components" className="btn  border-2 bg-transparent border-blue-600  mx-2">{t("useBtn")}</Link>
                     </div>
                 </div>
             </div>
@@ -41,7 +47,7 @@ const Hero:React.FC = () => {
                         </svg>
                     </div>
                     <div className="stat-title">{t('totalUsers')}</div>
-                    <div className="stat-value text-primary">25.6K</div>
+                    <div className="stat-value text-primary">100+</div>
 
                 </div>
 
@@ -60,7 +66,7 @@ const Hero:React.FC = () => {
                         </svg>
                     </div>
                     <div className="stat-title">{t('totalContributors')}</div>
-                    <div className="stat-value text-secondary">2.6M</div>
+                    <div className="stat-value text-secondary">{datas?.collaborators.length}</div>
 
                 </div>
 
@@ -74,7 +80,7 @@ const Hero:React.FC = () => {
                         </div>
                     </div>
                     <div className="stat-title">{t('totalStars')}</div>
-                    <div className="stat-value">100</div>
+                    <div className="stat-value">{datas?.stars}</div>
                 </div>
             </div>
         </>

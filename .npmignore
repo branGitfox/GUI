@@ -1,0 +1,18 @@
+# Ne pas publier ces fichiers/dossiers sur npm
+node_modules/
+
+.vscode/
+.git/
+.gitignore
+npm-debug.log
+tsconfig.json
+jest.config.js
+babel.config.js
+.storybook/
+tests/
+coverage/
+
+
+.vite/
+*.test.ts
+*.spec.ts
